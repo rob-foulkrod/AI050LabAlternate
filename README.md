@@ -39,3 +39,19 @@ You will need to set 4 configuration values to match your open AI deployment:
   }
 ]
 ```
+### Once you have configured the search service for Lab 6, you will need to update the following configuration values:
+
+```json
+[
+  {
+	"name": "SearchServiceName",
+	"value": "<yourSearchServiceName>",
+	"slotSetting": false
+  },
+  {
+	"name": "SearchServiceAdminApiKey",
+	"value": "<yourSearchServiceAdminApiKey>",
+	"slotSetting": false
+  }
+]
+```

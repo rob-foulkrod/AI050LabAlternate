@@ -22,40 +22,12 @@
                     <label>
                         System Message:
                         <InputTextArea @bind-Value="LabModel.SystemMessage" class="form-control" />
-                        <ConcurrencyField Model="@LabModel"
-                                          Property="obj => obj?.SystemMessage" />
-                    </label>
-                </div>
-
-                <div class="row">
-                    <label>
-                        Other Message:
-                        <InputSelect @bind-Value="LabModel.AssistantSetup" class="form-control">
-                            <option value="None">Select Assistant Setup</option>
-                            <option value="fewShot">Add few - shot examples</option>
-                            <option value="empty">Empty Example</option>
-                        </InputSelect>
-                        <ConcurrencyField Model="@LabModel"
-                                          Property="obj => obj?.AssistantSetup" />
 
                     </label>
                 </div>
-                <div hidden="@LabModel.IsAssistantHidden" class="row">
-                    <label>
-                        User Message:
-                        <InputTextArea @bind-Value="LabModel.UserMessage" class="form-control" />
-                        <ConcurrencyField Model="@LabModel"
-                                          Property="obj => obj?.UserMessage" />
-                    </label>
 
-                    <label>
-                        Assistant Message:
-                        <InputTextArea @bind-Value="LabModel.AssistantMessage" class="form-control" rows="7" />
-                        <ConcurrencyField Model="@LabModel"
-                                          Property="obj => obj?.AssistantMessage" />
-
-                    </label>
-                </div>
+       
+ 
             </div>
             <div class="col-6 d-flex flex-column">
                 <div class="row input-group mb-3">
@@ -63,16 +35,14 @@
                     <label>
                         Temperature:
                         <InputNumber @bind-Value="LabModel.Temperature" class="form-control" />
-                        <ConcurrencyField Model="@LabModel"
-                                          Property="obj => obj?.Temperature" />
+
 
                     </label>
 
                     <label>
                         MaxResponses:
                         <InputNumber @bind-Value="LabModel.MaxResponses" class="form-control" />
-                        <ConcurrencyField Model="@LabModel"
-                                          Property="obj => obj?.MaxResponses" />
+
 
                     </label>
                 </div>
@@ -82,8 +52,7 @@
                     <label>
                         Query Message:
                         <InputTextArea @bind-Value="LabModel.QueryMessage" class="form-control" rows="7" />
-                        <ConcurrencyField Model="@LabModel"
-                                          Property="obj => obj?.QueryMessage" />
+
 
                     </label>
                 </div>
@@ -104,8 +73,7 @@
                     <label>
                         Response Message:
                         <InputTextArea @bind-Value="LabModel.ResponseMessage" class="form-control" rows="7" />
-                        <ConcurrencyField Model="@LabModel"
-                                          Property="obj => obj?.ResponseMessage" />
+
 
                     </label>
                 </div>

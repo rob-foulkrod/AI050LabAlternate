@@ -2,7 +2,7 @@
 @using AI050LabAlternate.Components;
 
 
-<h1>Lab 01 Emulator</h1>
+<h1>Lab 04 Emulator</h1>
 
 
 <hr />
@@ -22,35 +22,12 @@
                     <label>
                         System Message:
                         <InputTextArea @bind-Value="LabModel.SystemMessage" class="form-control" />
-                    </label>
-                </div>
-
-                <div class="row">
-                    <label>
-                        Other messages:
-                        <InputSelect @bind-Value="LabModel.AssistantSetup" class="form-control">
-                            <option value="None">Select Assistant Setup</option>
-                            <option value="fewShot">Add few - shot examples</option>
-                            <option value="empty">Empty Example</option>
-                        </InputSelect>
-
 
                     </label>
                 </div>
-                <div hidden="@LabModel.IsAssistantHidden" class="row">
-                    <label>
-                        User Message:
-                        <InputTextArea @bind-Value="LabModel.UserMessage" class="form-control" />
 
-                    </label>
+     
 
-                    <label>
-                        Assistant Message:
-                        <InputTextArea @bind-Value="LabModel.AssistantMessage" class="form-control" rows="7" />
-
-
-                    </label>
-                </div>
             </div>
             <div class="col-6 d-flex flex-column">
                 <div class="row input-group mb-3">
@@ -83,7 +60,6 @@
 
                 <div class="d-flex justify-content-md-center">
                     <button type="submit" class="btn btn-primary" disabled="@Busy">Send</button>
-                    <button type="Button" class="btn btn-primary" @onclick="@ViewCode">View Code</button>
                     <button type="reset" class="btn btn-primary">Clear Chat</button>
                 </div>
             </div>
@@ -98,7 +74,6 @@
                         Response Message:
                         <InputTextArea @bind-Value="LabModel.ResponseMessage" class="form-control" rows="7" />
 
-
                     </label>
                 </div>
             </div>
@@ -107,6 +82,11 @@
 </EditForm>
 
 @code {
+
+// The Lab Model to upsert.
+[Parameter]
+public Lab04Model? LabModel { get; set; }
+
 // Let parent handle result of validation.
 [Parameter]
 public EventCallback<bool> ValidationResult { get; set; }
@@ -114,10 +94,6 @@ public EventCallback<bool> ValidationResult { get; set; }
 
 [Parameter]
 public EventCallback ViewCode { get; set; }
-
-// The Lab Model to upsert.
-[Parameter]
-public Lab01Model? LabModel { get; set; }
 
 
 // Prevent multiple asynchronous operations at the same time.

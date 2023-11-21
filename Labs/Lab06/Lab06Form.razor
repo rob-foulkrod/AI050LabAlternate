@@ -2,15 +2,16 @@
 @using AI050LabAlternate.Components;
 
 
-<h1>Lab 01 Emulator</h1>
+<h1>Lab 06 Emulator</h1>
 
+This will only work if your instructor adds a datasource named 'margiestravel'.
 
 <hr />
 
+
 <EditForm Model="@LabModel"
           OnInvalidSubmit="(async () => await HandleSubmitAsync(false))"
-          OnValidSubmit="(async () => await HandleSubmitAsync(true))"
-          >
+          OnValidSubmit="(async () => await HandleSubmitAsync(true))">
     <DataAnnotationsValidator />
     <ValidationSummary />
     <div class="container-fluid form-group">
@@ -18,39 +19,26 @@
 
             <div class="col-6 d-flex flex-column align-col ">
                 <h3>Asisstant Setup</h3>
-                <div class="row">
+                <div class="row mb-3">
                     <label>
                         System Message:
                         <InputTextArea @bind-Value="LabModel.SystemMessage" class="form-control" />
+
                     </label>
                 </div>
-
                 <div class="row">
-                    <label>
-                        Other messages:
-                        <InputSelect @bind-Value="LabModel.AssistantSetup" class="form-control">
-                            <option value="None">Select Assistant Setup</option>
-                            <option value="fewShot">Add few - shot examples</option>
-                            <option value="empty">Empty Example</option>
-                        </InputSelect>
 
+                    <label>
+                        Use Custom Data Source:<br/>
+                        <InputRadioGroup Name="UseCustomDataSource" @bind-Value="@LabModel.UseCustomDataSource">
+                            <InputRadio Name="UseCustomDataSource" Value="@true" />Yes<br>
+                            <InputRadio Name="UseCustomDataSource" Value="@false" />No<br>
+                        </InputRadioGroup>
 
                     </label>
                 </div>
-                <div hidden="@LabModel.IsAssistantHidden" class="row">
-                    <label>
-                        User Message:
-                        <InputTextArea @bind-Value="LabModel.UserMessage" class="form-control" />
-
-                    </label>
-
-                    <label>
-                        Assistant Message:
-                        <InputTextArea @bind-Value="LabModel.AssistantMessage" class="form-control" rows="7" />
 
 
-                    </label>
-                </div>
             </div>
             <div class="col-6 d-flex flex-column">
                 <div class="row input-group mb-3">
@@ -83,7 +71,6 @@
 
                 <div class="d-flex justify-content-md-center">
                     <button type="submit" class="btn btn-primary" disabled="@Busy">Send</button>
-                    <button type="Button" class="btn btn-primary" @onclick="@ViewCode">View Code</button>
                     <button type="reset" class="btn btn-primary">Clear Chat</button>
                 </div>
             </div>
@@ -91,13 +78,12 @@
 
         </div>
         <div class="row">
-        <div class="col-12">
+            <div class="col-12">
                 <h3>Response</h3>
                 <div class="row">
                     <label>
                         Response Message:
                         <InputTextArea @bind-Value="LabModel.ResponseMessage" class="form-control" rows="7" />
-
 
                     </label>
                 </div>
@@ -107,6 +93,11 @@
 </EditForm>
 
 @code {
+
+// The Lab Model to upsert.
+[Parameter]
+public Lab06Model? LabModel { get; set; }
+
 // Let parent handle result of validation.
 [Parameter]
 public EventCallback<bool> ValidationResult { get; set; }
@@ -114,10 +105,6 @@ public EventCallback<bool> ValidationResult { get; set; }
 
 [Parameter]
 public EventCallback ViewCode { get; set; }
-
-// The Lab Model to upsert.
-[Parameter]
-public Lab01Model? LabModel { get; set; }
 
 
 // Prevent multiple asynchronous operations at the same time.

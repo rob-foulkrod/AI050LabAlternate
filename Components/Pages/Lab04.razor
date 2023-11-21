@@ -1,6 +1,6 @@
-﻿@page "/lab03"
+﻿@page "/lab04"
 @rendermode InteractiveServer
-@using AI050LabAlternate.Labs.Lab03
+@using AI050LabAlternate.Labs.Lab04
 
 @inject NavigationManager Navigation
 @inject EditSuccess EditSuccessState
@@ -10,7 +10,7 @@
 @if (LabModel is not null)
         {
 
-<Lab03Form Busy="@Busy"
+<Lab04Form Busy="@Busy"
            LabModel="@LabModel"
            ValidationResult="@(async (success) => await ValidationResultAsync(success))"/>
         }
@@ -26,7 +26,7 @@
         }
 
 @code {
-    private Lab03Model? LabModel { get; set; }
+    private Lab04Model? LabModel { get; set; }
 
 
 
