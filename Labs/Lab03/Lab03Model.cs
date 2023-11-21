@@ -2,9 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 
 
-namespace AI050LabAlternate.Labs.Lab02
+namespace AI050LabAlternate.Labs.Lab03
 {
-    public class Lab02Model
+    public class Lab03Model
     {
         [Required]
         [StringLength(5000, ErrorMessage = "System Message Cannot Exceed 5000 characters")]

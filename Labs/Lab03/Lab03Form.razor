@@ -2,7 +2,7 @@
 @using AI050LabAlternate.Components;
 
 
-<h1>Lab 02 Emulator</h1>
+<h1>Lab 03 Emulator</h1>
 
 
 <hr />
@@ -29,7 +29,7 @@
 
                 <div class="row">
                     <label>
-                        System Message:
+                        Other Message:
                         <InputSelect @bind-Value="LabModel.AssistantSetup" class="form-control">
                             <option value="None">Select Assistant Setup</option>
                             <option value="fewShot">Add few - shot examples</option>
@@ -91,7 +91,6 @@
 
                 <div class="d-flex justify-content-md-center">
                     <button type="submit" class="btn btn-primary" disabled="@Busy">Send</button>
-                    <button type="Button" class="btn btn-primary" @onclick="@ViewCode">View Code</button>
                     <button type="reset" class="btn btn-primary">Clear Chat</button>
                 </div>
             </div>
@@ -119,7 +118,7 @@
 
 // The Lab Model to upsert.
 [Parameter]
-public Lab02Model? LabModel { get; set; }
+public Lab03Model? LabModel { get; set; }
 
 // Let parent handle result of validation.
 [Parameter]
