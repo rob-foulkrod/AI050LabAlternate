@@ -1,6 +1,6 @@
 ﻿@page "/lab01"
 @rendermode InteractiveServer
-@using AI050LabAlternate.Labs.Lab01
+
 
 @inject NavigationManager Navigation
 @inject EditSuccess EditSuccessState
@@ -13,7 +13,8 @@
 <Lab01Form Busy="@Busy"
            LabModel="@LabModel"
            ValidationResult="@(async (success) => await ValidationResultAsync(success))"
-           ViewCode="@(async (success) => await ViewCode())" />
+            />
+
         }
 @if (Success)
         {
@@ -27,9 +28,8 @@
         }
 
 @code {
+
     private Lab01Model? LabModel { get; set; }
-
-
 
     // True when an asynchronous operation is running.
     private bool Busy;
@@ -74,11 +74,13 @@
     try
     {
         var messages = new List<ChatMessage>();
-        if (!LabModel.IsAssistantHidden)
+
+        foreach (var example in LabModel.Examples)
         {
-            messages.Add(new ChatMessage(ChatRole.Assistant, LabModel.AssistantMessage));
-            messages.Add(new ChatMessage(ChatRole.System, LabModel.UserMessage));
+            messages.Add(new ChatMessage(ChatRole.User, example.UserMessage));
+            messages.Add(new ChatMessage(ChatRole.Assistant, example.AssistantMessage));
         }
+
 
         messages.Add(new ChatMessage(ChatRole.User, LabModel.QueryMessage));
         if (!string.IsNullOrEmpty(LabModel.SystemMessage))

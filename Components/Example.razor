@@ -1,0 +1,20 @@
+﻿<div class="row">
+    <label>
+        User Message @Index:
+        <InputTextArea @bind-Value="ExampleModel.UserMessage" class="form-control" />
+
+    </label>
+
+    <label>
+        Assistant Message @Index:
+        <InputTextArea @bind-Value="ExampleModel.AssistantMessage" class="form-control" rows="7" />
+    </label>
+</div>
+
+@code {
+    [Parameter]
+    public ExampleModel? ExampleModel { get; set; }
+
+    [Parameter]
+    public int Index { get; set; }
+}

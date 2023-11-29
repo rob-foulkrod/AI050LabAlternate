@@ -2,9 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 
 
-namespace AI050LabAlternate.Labs.Lab01
+namespace AI050LabAlternate.Components.Pages
 {
-    public class Lab01Model
+    public class Lab04Model
     {
         [Required]
         [StringLength(5000, ErrorMessage = "System Message Cannot Exceed 5000 characters")]
@@ -14,8 +14,6 @@ namespace AI050LabAlternate.Labs.Lab01
         [StringLength(5000, ErrorMessage = "User Message Cannot Exceed 5000 characters")]
         public string UserMessage { get; set; }
 
-        [StringLength(5000, ErrorMessage = "Assistant Message Cannot Exceed 5000 characters")]
-        public string AssistantMessage { get; set; }
 
 
         [Required]
@@ -30,12 +28,8 @@ namespace AI050LabAlternate.Labs.Lab01
         [Range(0, 1000, ErrorMessage = "MaxResponses must be a decimal between 0 and 1000")]
         public int MaxResponses { get; set; } = 800;
 
-        public string AssistantSetup { get; set; }
 
-        public bool IsAssistantHidden
-        {
-            get { return AssistantSetup != "fewShot"; }
-        }
+
 
         public string ResponseMessage { get; set; }
 

@@ -1,16 +1,18 @@
 ﻿@using Microsoft.AspNetCore.Components.Forms;
 @using AI050LabAlternate.Components;
+@rendermode InteractiveServer
 
 
-<h1>Lab 04 Emulator</h1>
+<h1>Lab 06 Emulator</h1>
 
+This will only work if your instructor adds a datasource named 'margiestravel'.
 
 <hr />
 
+
 <EditForm Model="@LabModel"
           OnInvalidSubmit="(async () => await HandleSubmitAsync(false))"
-          OnValidSubmit="(async () => await HandleSubmitAsync(true))"
-          >
+          OnValidSubmit="(async () => await HandleSubmitAsync(true))">
     <DataAnnotationsValidator />
     <ValidationSummary />
     <div class="container-fluid form-group">
@@ -18,15 +20,25 @@
 
             <div class="col-6 d-flex flex-column align-col ">
                 <h3>Asisstant Setup</h3>
-                <div class="row">
+                <div class="row mb-3">
                     <label>
                         System Message:
                         <InputTextArea @bind-Value="LabModel.SystemMessage" class="form-control" />
 
                     </label>
                 </div>
+                <div class="row">
 
-     
+                    <label>
+                        Use Custom Data Source:<br/>
+                        <InputRadioGroup Name="UseCustomDataSource" @bind-Value="@LabModel.UseCustomDataSource">
+                            <InputRadio Name="UseCustomDataSource" Value="@true" />Yes<br>
+                            <InputRadio Name="UseCustomDataSource" Value="@false" />No<br>
+                        </InputRadioGroup>
+
+                    </label>
+                </div>
+
 
             </div>
             <div class="col-6 d-flex flex-column">
@@ -67,7 +79,7 @@
 
         </div>
         <div class="row">
-        <div class="col-12">
+            <div class="col-12">
                 <h3>Response</h3>
                 <div class="row">
                     <label>
@@ -85,7 +97,7 @@
 
 // The Lab Model to upsert.
 [Parameter]
-public Lab04Model? LabModel { get; set; }
+public Lab06Model? LabModel { get; set; }
 
 // Let parent handle result of validation.
 [Parameter]

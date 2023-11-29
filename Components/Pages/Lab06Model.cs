@@ -2,13 +2,16 @@
 using System.ComponentModel.DataAnnotations;
 
 
-namespace AI050LabAlternate.Labs.Lab03
+namespace AI050LabAlternate.Components.Pages
 {
-    public class Lab03Model
+    public class Lab06Model
     {
-        [Required]
         [StringLength(5000, ErrorMessage = "System Message Cannot Exceed 5000 characters")]
         public string SystemMessage { get; set; }
+
+
+        [StringLength(5000, ErrorMessage = "User Message Cannot Exceed 5000 characters")]
+        public string UserMessage { get; set; }
 
 
 
@@ -24,6 +27,7 @@ namespace AI050LabAlternate.Labs.Lab03
         [Range(0, 1000, ErrorMessage = "MaxResponses must be a decimal between 0 and 1000")]
         public int MaxResponses { get; set; } = 800;
 
+        public bool UseCustomDataSource { get; set; }
 
         public string ResponseMessage { get; set; }
 

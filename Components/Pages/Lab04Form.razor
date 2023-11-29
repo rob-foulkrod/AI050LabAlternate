@@ -1,8 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Components.Forms;
 @using AI050LabAlternate.Components;
+@rendermode InteractiveServer
 
-
-<h1>Lab 03 Emulator</h1>
+<h1>Lab 04 Emulator</h1>
 
 
 <hr />
@@ -26,8 +26,8 @@
                     </label>
                 </div>
 
-       
- 
+     
+
             </div>
             <div class="col-6 d-flex flex-column">
                 <div class="row input-group mb-3">
@@ -74,7 +74,6 @@
                         Response Message:
                         <InputTextArea @bind-Value="LabModel.ResponseMessage" class="form-control" rows="7" />
 
-
                     </label>
                 </div>
             </div>
@@ -86,7 +85,7 @@
 
 // The Lab Model to upsert.
 [Parameter]
-public Lab03Model? LabModel { get; set; }
+public Lab04Model? LabModel { get; set; }
 
 // Let parent handle result of validation.
 [Parameter]
