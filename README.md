@@ -46,7 +46,7 @@ You will need to set 4 configuration values to match your open AI deployment:
     - OpenAI__SearchIndexName
     - OpenAI__SearchKey
    
-   The values can be easily from from the OpanAI sandbox when you view code. It will lok similar to the location below:
+   The values can be easily from from the OpanAI sandbox when you view code. It will look similar to the location below:
 
 ```json
 [
@@ -87,5 +87,8 @@ You will need to set 4 configuration values to match your open AI deployment:
   }
 ]
 ```
+
+Once the Search parameters are configured, the app will display the 'Use Custom Data Source' option on the Sandbox Lite page.
+
 
 Remember to delete the resources after class to avoid charges.
