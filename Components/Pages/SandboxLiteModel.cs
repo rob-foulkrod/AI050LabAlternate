@@ -5,10 +5,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AI050LabAlternate.Components.Pages
 {
-    public class Lab01Model
+    public class SandboxLiteModel
     {
 
-        public Lab01Model()
+        public SandboxLiteModel()
         {
             SystemMessage = "";
             QueryMessage = "";
@@ -53,6 +53,10 @@ namespace AI050LabAlternate.Components.Pages
                 Examples.RemoveAt(Examples.Count - 1);
             }
         }
+
+        public bool CustomDataSourceConfigured { get; set; }
+
+        public bool UseCustomDataSource { get; set; }
 
         public string ResponseMessage { get; set; }
 
