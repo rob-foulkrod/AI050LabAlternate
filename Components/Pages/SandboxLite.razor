@@ -1,15 +1,12 @@
 ﻿@page "/SandboxLite"
 @rendermode InteractiveServer
 
-
-@inject NavigationManager Navigation
-@inject EditSuccess EditSuccessState
 @inject OpenAIClient OpenAIClient
 @inject OpenAIConfig OpenAIConfig
 
 
 
-@if (LabModel is not null)
+@if (LabModel is not null && OpenAIConfig.OpenAIConfigured)
 {
 
     <SandboxLiteForm Busy="@Busy"
@@ -17,7 +14,15 @@
                ValidationResult="@(async (success) => await ValidationResultAsync(success))"
                SearchConfigured="@OpenAIConfig.SearchConfigured" />
 
+}else
+{
+    <div class="alert alert-danger" role="alert">
+        <h1>Configuration Error</h1>
+        Azure Open API Settings cannot be found. This installation has not been completeted. Please see the README for further deployment instructions.
+    </div>
 }
+
+
 @if (Success)
 {
     <br />

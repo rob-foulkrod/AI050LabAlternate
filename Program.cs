@@ -13,7 +13,9 @@ builder.Services.AddRazorComponents()
 
 var openAIConfig = new OpenAIConfig
 {
-    DeploymentName = builder.Configuration["OpenAI:DeploymentName"] ?? throw new Exception("Did not find OpenAI:DeploymentName in configuration"),
+    OpenAIURI = builder.Configuration["OpenAI:Uri"] ?? OpenAIConfig.AzureOpenAIEndpointDefault,
+    OpenAIKey = builder.Configuration["OpenAI:Key"] ?? OpenAIConfig.AzureOpenAIKeyDefault,
+    DeploymentName = builder.Configuration["OpenAI:DeploymentName"] ?? "",
     Version = builder.Configuration["OpenAI:Version"] ?? "",
     SearchEndpoint = builder.Configuration["OpenAI:SearchEndpoint"] ?? "",
     SearchKey = builder.Configuration["OpenAI:SearchKey"] ?? "",
@@ -22,11 +24,7 @@ var openAIConfig = new OpenAIConfig
 
 builder.Services.AddSingleton(openAIConfig);
 
-
-var uri = builder.Configuration["OpenAI:Uri"] ?? throw new Exception("Did not find OpenAI:Uri in configuration");
-var key = builder.Configuration["OpenAI:Key"] ?? throw new Exception("Did not find OpenAI:Key in configuration");
-
-builder.Services.AddSingleton(new OpenAIClient(new Uri(uri), new AzureKeyCredential(key)));
+builder.Services.AddSingleton(new OpenAIClient(new Uri(openAIConfig.OpenAIURI), new AzureKeyCredential(openAIConfig.OpenAIKey)));
 
 
 // Service to communicate success on edit between pages
