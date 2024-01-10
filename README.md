@@ -88,7 +88,7 @@ You will need to set 4 configuration values to match your open AI deployment:
 ]
 ```
 
-Once the Search parameters are configured, the app will display the 'Use Custom Data Source' option on the Sandbox Lite page.
+Once the search parameters are configured, the app will display the 'Use Custom Data Source' option on the Sandbox Lite page.
 
 
 Remember to delete the resources after class to avoid charges.
