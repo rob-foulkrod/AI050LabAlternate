@@ -52,7 +52,7 @@ Remember to delete the resources after class to avoid charges.
 
  
 
-Big thanks to Rob Foulkrod for creating this alternate demo environment! 
+Big thanks to Vincent Kok for creating the guide! 
 
 ## Additional (good to know notes): 
 When you go to run it locally on your machine, you will need to do the equivalent of the app settings, this in found in the appsettings.Development.json file. 
